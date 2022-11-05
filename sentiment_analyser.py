@@ -14,7 +14,9 @@ model = TFAutoModelForSequenceClassification.from_pretrained(model_name)
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 classifier = pipeline("sentiment-analysis", model=model, tokenizer=tokenizer)
 
-if submit and len(user_input) > 0:
+if submit:
+    if (len(user_input) > 0):
+        st.error(f'Input cannot be empty')
     result = classifier(user_input)[0]
     label = result['label']
     score = result['score']
