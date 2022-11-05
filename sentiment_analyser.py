@@ -1,7 +1,7 @@
 import streamlit as st
 from transformers import pipeline, AutoTokenizer, TFAutoModelForSequenceClassification
 
-st.title('Sentiment Analyser App for Hotel Reviews')
+st.markdown("<h1 style='text-align: center; color: red;'>Sentiment Analyser for Hotel Reviews</h1>", unsafe_allow_html=True)
 st.image("""https://cdn2.hubspot.net/hubfs/439788/Blog/Featured%20Images/Best%20Hotel%20Website%20Designs.jpg""")
 st.write('This demo app uses DistilBERT which is a smaller general-purpose language representation model we just discussed.')
 
