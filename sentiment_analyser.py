@@ -19,10 +19,11 @@ if submit:
     st.write(f'Length is {n}')
     if (n <= 0):
         st.error(f'Input cannot be empty')
-    result = classifier(user_input)[0]
-    label = result['label']
-    score = result['score']
-    if label == 'POSITIVE':
-        st.success(f'{label} sentiment (score: {score})')
     else:
-        st.error(f'{label} sentiment (score: {score})')
+        result = classifier(user_input)[0]
+        label = result['label']
+        score = result['score']
+        if label == 'POSITIVE':
+            st.success(f'{label} sentiment (score: {score})')
+        else:
+            st.error(f'{label} sentiment (score: {score})')
