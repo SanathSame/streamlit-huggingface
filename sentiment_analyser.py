@@ -15,8 +15,9 @@ tokenizer = AutoTokenizer.from_pretrained(model_name)
 classifier = pipeline("sentiment-analysis", model=model, tokenizer=tokenizer)
 
 if submit:
-    st.write(f'{len(user_input}')
-    if (len(user_input) <= 0):
+    n = len(user_input)
+    st.write(f'Length is {n}')
+    if (n <= 0):
         st.error(f'Input cannot be empty')
     result = classifier(user_input)[0]
     label = result['label']
