@@ -1,12 +1,10 @@
 import streamlit as st
 from transformers import pipeline, AutoTokenizer, TFAutoModelForSequenceClassification
 
-st.title('Sentiment Analyser App')
-st.write('This app uses the Hugging Face Transformers [sentiment analyser](https://huggingface.co/course/chapter1/3?fw=tf) library to clasify the sentiment of your input as postive or negative. The web app is built using [Streamlit](https://docs.streamlit.io/en/stable/getting_started.html).')
-st.write(
-    'To find out how this app was developed, please check out my [Medium post](https://medium.com/@rtkilian/deploy-and-share-your-sentiment-analysis-app-using-streamlit-sharing-2ba3ca6a3ead). To see my source code, have a look at my [GitHub repo](https://github.com/rtkilian/streamlit-huggingface).')
+st.title('Sentiment Analyser App for Hotel Reviews')
+st.image("""https://cdn2.hubspot.net/hubfs/439788/Blog/Featured%20Images/Best%20Hotel%20Website%20Designs.jpg""")
+st.write('This demo app uses DistilBERT which is a smaller general-purpose language representation model we just discussed.')
 
-st.write('*Note: it will take up to 30 seconds to run the app.*')
 
 form = st.form(key='sentiment-form')
 user_input = form.text_area('Enter your text')
@@ -17,11 +15,9 @@ tokenizer = AutoTokenizer.from_pretrained(model_name)
 classifier = pipeline("sentiment-analysis", model=model, tokenizer=tokenizer)
 
 if submit:
-    with st.spinner('Wait for it...'):
-        result = classifier(user_input)[0]
-        label = result['label']
-        score = result['score']
-
+    result = classifier(user_input)[0]
+    label = result['label']
+    score = result['score']
     if label == 'POSITIVE':
         st.success(f'{label} sentiment (score: {score})')
     else:
