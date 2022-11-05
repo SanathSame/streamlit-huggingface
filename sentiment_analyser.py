@@ -16,8 +16,8 @@ classifier = pipeline("sentiment-analysis", model=model, tokenizer=tokenizer)
 
 if submit:
     n = len(user_input)
-    st.write(f'Length is {n}')
     if (n <= 0):
+        st.write(f'Length is {n}')
         st.error(f'Input cannot be empty')
     else:
         result = classifier(user_input)[0]
