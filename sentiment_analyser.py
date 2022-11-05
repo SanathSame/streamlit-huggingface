@@ -1,13 +1,13 @@
 import streamlit as st
 from transformers import pipeline, AutoTokenizer, TFAutoModelForSequenceClassification
 
-st.markdown("<h1 style='text-align: center; color: red;'>Sentiment Analyser for Hotel Reviews</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'>Sentiment Analyser for Hotel Reviews</h1>", unsafe_allow_html=True)
 st.image("""https://cdn2.hubspot.net/hubfs/439788/Blog/Featured%20Images/Best%20Hotel%20Website%20Designs.jpg""")
 st.write('This demo app uses DistilBERT which is a smaller general-purpose language representation model we just discussed.')
 
 
 form = st.form(key='sentiment-form')
-user_input = form.text_area('Enter your text')
+user_input = form.text_area('Enter your review text you wish analysed')
 submit = form.form_submit_button('Submit')
 model_name = "distilbert-base-uncased-finetuned-sst-2-english"
 model = TFAutoModelForSequenceClassification.from_pretrained(model_name)
