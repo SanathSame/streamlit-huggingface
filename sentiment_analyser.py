@@ -17,9 +17,10 @@ tokenizer = AutoTokenizer.from_pretrained(model_name)
 classifier = pipeline("sentiment-analysis", model=model, tokenizer=tokenizer)
 
 if submit:
-    result = classifier(user_input)[0]
-    label = result['label']
-    score = result['score']
+    with st.spinner('Wait for it...'):
+        result = classifier(user_input)[0]
+        label = result['label']
+        score = result['score']
 
     if label == 'POSITIVE':
         st.success(f'{label} sentiment (score: {score})')
